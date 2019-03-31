@@ -1,6 +1,6 @@
 # Universal Language for Mathematics
 
-Project to define a spec for a univeral [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) for mathematical expressions.
+Project to define a spec for a universal [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) (AST) for mathematical expressions.
 
 Something like this:
 
@@ -43,7 +43,7 @@ Which might be presented like this:
 4 • 7
 ```
 
-Or maybe we'd want to respresnt it as words:
+Or maybe we'd want to presented it as words:
 
 ```
 four multiplied by seven
@@ -70,7 +70,9 @@ Or maybe graphically:
 
 You get the idea.
 
-A well defined AST means we'd also be able to do transformations (such as evaulating it):
+A well defined AST means we'd also be able to do transformations.
+
+We could take an expression like this:
 
 ```yaml
 type: root
@@ -85,7 +87,7 @@ value:
     value: 7
 ```
 
-Becomes:
+And evaluate it to this:
 
 ```yaml
 type: root
