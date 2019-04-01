@@ -1,6 +1,6 @@
 {
   "private": true,
-  "workspaces": ["ulm-spec"],
+  "workspaces": ["ulm-spec", "ulm-js"],
   "scripts": {
     "build": "yarn workspace ulm-spec run build"
   }
