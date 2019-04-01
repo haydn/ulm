@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "workspaces": ["ulm-spec"],
+  "scripts": {
+    "build": "yarn workspace ulm-spec run build"
+  }
+}
