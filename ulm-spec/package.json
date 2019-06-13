@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "(rm -r ./build &>/dev/null || true) && mkdir ./build && spec-md ./README.md > ./build/index.html",
+    "now-build": "mkdir ./dist && spec-md ./README.md > ./dist/index.html",
     "test": "exit 0"
   },
   "devDependencies": {

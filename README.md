@@ -15,15 +15,14 @@ Universal Language for Mathematics (ULM) is a language for describing both the s
 A ULM [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) might look something like this:
 
 ```yaml
-type: root
-value:
-  type: multiply
-  left:
-    type: int
-    value: 4
-  right:
-    type: int
-    value: 7
+type: MultiplicationOperation
+operands:
+  - type: NumericLiteral
+    numerator: 4
+    denominator: 1
+  - type: NumericLiteral
+    numerator: 7
+    denominator: 1
 ```
 
 Which might be presented like this:
@@ -35,16 +34,16 @@ Which might be presented like this:
 We could also layer on some information to explicitly define how it should be presented:
 
 ```yaml
-type: root
-value:
-  type: multiply
+type: MultiplicationOperation
+presentation:
   style: dot
-  left:
-    type: int
-    value: 4
-  right:
-    type: int
-    value: 7
+operands:
+  - type: NumericLiteral
+    numerator: 4
+    denominator: 1
+  - type: NumericLiteral
+    numerator: 7
+    denominator: 1
 ```
 
 Which might be presented like this:
