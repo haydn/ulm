@@ -1,27 +1,17 @@
-ULM.js
-------
+# ULM.js
 
 ⚠️ WIP ⚠️
 
-A JavaScript library for working with a ULM AST.
+A JavaScript library for working with ULM.
 
-```js
-import { toLatex } from "ulm-js";
+```typescript
+import { Expression, Token, tokenize, parse, toLatex } from "ulm-js";
 
-toLatex({
-  type: 'root',
-  value: {
-    type: 'add',
-    left: {
-      type: 'int',
-      value: 2,
-    },
-    right: {
-      type: 'int',
-      value: 3,
-    }
-  }
-});
+const ulmScript: string = "+(2, /(12, 3))";
+const tokens: Token[] = tokenize(ulmScript);
+const ast: Expression = parse(tokens);
+const latex: string = toLatex(ast);
 
-// 2 + 3
+// Prints: "2 + \frac{12}{3}"
+console.log(latex);
 ```
