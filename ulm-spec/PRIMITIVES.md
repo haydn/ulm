@@ -1,7 +1,11 @@
 # Primitives
 
-## [naturalNumber](./naturalNumber/README.md)
+## [NaturalNumber](./NaturalNumber/README.md)
 
-## [wholeNumber](./wholeNumber/README.md)
+## [WholeNumber](./WholeNumber/README.md)
 
-## [integer](./integer/README.md)
+## [IntegerNumber](./IntegerNumber/README.md)
+
+## [RationalNumber](./RationalNumber/README.md)
+
+## [Expression](./Expression/README.md)

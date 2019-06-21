@@ -4,6 +4,8 @@ Equal.
 
 ## Definition
 
+TypeScript:
+
 ```ts
 interface NumericEqualRelation = {
   type: "NumericEqualRelation";
@@ -17,9 +19,9 @@ interface NumericEqualRelation = {
 # 4 = 4
 type: NumericEqualRelation
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
 ```
 
@@ -27,15 +29,15 @@ operands:
 # 0.1 + 0.2 = 0.3
 type: NumericEqualRelation
 operands:
-  - type: AdditionOperation
+  - type: NumericAdditionOperation
     operands:
-      - type: NumericLiteral
+      - type: RationalNumber
         numerator: 1
         denominator: 10
-      - type: NumericLiteral
+      - type: RationalNumber
         numerator: 2
         denominator: 10
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 3
     denominator: 10
 ```

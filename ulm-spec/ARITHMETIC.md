@@ -2,13 +2,11 @@
 
 ## [NumericExpression](./NumericExpression/README.md)
 
-## [NumericLiteral](./NumericLiteral/README.md)
-
 ## [NumericOperation](./NumericOperation/README.md)
 
-## [AdditionOperation](./AdditionOperation/README.md)
+## [NumericAdditionOperation](./NumericAdditionOperation/README.md)
 
-## [MultiplicationOperation](./MultiplicationOperation/README.md)
+## [NumericMultiplicationOperation](./NumericMultiplicationOperation/README.md)
 
 ## [NumericRelation](./NumericRelation/README.md)
 

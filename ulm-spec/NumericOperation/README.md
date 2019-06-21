@@ -4,6 +4,8 @@ An operation that, if evaluated, returns in a numeric value.
 
 ## Definition
 
+TypeScript:
+
 ```ts
-type NumericOperation = AdditionOperation | MultiplicationOperation;
+type NumericOperation = NumericAdditionOperation | NumericMultiplicationOperation;
 ```

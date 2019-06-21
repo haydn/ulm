@@ -17,10 +17,10 @@ A ULM [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree) might look somet
 ```yaml
 type: MultiplicationOperation
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
     denominator: 1
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 7
     denominator: 1
 ```
@@ -38,10 +38,10 @@ type: MultiplicationOperation
 presentation:
   style: dot
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
     denominator: 1
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 7
     denominator: 1
 ```
@@ -74,4 +74,15 @@ It might even be presented graphically:
 🦄🦄🦄🦄
 🦄🦄🦄🦄
 🦄🦄🦄🦄
+```
+
+## ULMScript
+
+```
+// 2 • 1 + ▯
+*(2, +(1, ?()), {
+  presentation: {
+    multiplicationSymbol: dot
+  }
+})
 ```

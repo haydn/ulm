@@ -4,6 +4,8 @@ An expression that, if evaluated, returns a numeric value.
 
 ## Definition
 
+TypeScript:
+
 ```ts
-type NumericExpression = NumericLiteral | NumericOperation;
+type NumericExpression = RationalNumber | NumericOperation;
 ```

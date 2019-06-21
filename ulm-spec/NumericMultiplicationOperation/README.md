@@ -1,12 +1,14 @@
-# MultiplicationOperation
+# NumericMultiplicationOperation
 
 A binary operation that multiplies two numeric values together.
 
 ## Definition
 
+TypeScript:
+
 ```ts
-interface MultiplicationOperation {
-  type: "MultiplicationOperation";
+interface NumericMultiplicationOperation {
+  type: "NumericMultiplicationOperation";
   operands: [NumericExpression, NumericExpression];
   presentation?: {
     style?: "dot" | "times"; // default = "times"
@@ -19,36 +21,36 @@ interface MultiplicationOperation {
 
 ```yaml
 # 4 × 7
-type: MultiplicationOperation
+type: NumericMultiplicationOperation
 presentation:
   style: dot
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 7
 ```
 
 ```yaml
 # 4 × 7
-type: MultiplicationOperation
+type: NumericMultiplicationOperation
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 9999
     denominator: 100
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 7
 ```
 
 ```yaml
 # 0.1 • 5
-type: MultiplicationOperation
+type: NumericMultiplicationOperation
 presentation:
   style: dot
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 1
     denominator: 10
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 5
 ```

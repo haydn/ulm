@@ -1,12 +1,14 @@
-# AdditionOperation
+# NumericAdditionOperation
 
 A binary operation that adds two numeric values together.
 
 ## Definition
 
+TypeScript:
+
 ```ts
-interface AdditionOperation {
-  type: "AdditionOperation";
+interface NumericAdditionOperation {
+  type: "NumericAdditionOperation";
   operands: [NumericExpression, NumericExpression];
   presentation?: {
     layout?: "vertical" | "inline"; // default = "inline"
@@ -16,26 +18,38 @@ interface AdditionOperation {
 
 ## Examples
 
+### AST
+
 ```yaml
 # 1 + 2
-type: AdditionOperation
+type: NumericAdditionOperation
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 1
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 2
 ```
 
 ```yaml
 #   0.1
 # + 5.0
-type: AdditionOperation
+type: NumericAdditionOperation
 presentation:
   layout: vertical
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 1
     denominator: 10
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 5
+```
+
+### ULMScript
+
+```
++(1, 3)
+```
+
+```
+NumericAdditionOperation(10, 456)
 ```

@@ -4,6 +4,8 @@ Not equal.
 
 ## Definition
 
+TypeScript:
+
 ```ts
 interface NumericNotEqualRelation {
   type: "NumericNotEqualRelation";
@@ -17,9 +19,9 @@ interface NumericNotEqualRelation {
 # 4 ≠ 25
 type: NumericNotEqualRelation
 operands:
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 4
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 25
 ```
 
@@ -29,15 +31,15 @@ type: NumericNotEqualRelation
 presentation:
   style: angleBrackets
 operands:
-  - type: AdditionOperation
+  - type: NumericAdditionOperation
     operands:
-      - type: NumericLiteral
+      - type: RationalNumber
         numerator: 1
         denominator: 10
-      - type: NumericLiteral
+      - type: RationalNumber
         numerator: 2
         denominator: 10
-  - type: NumericLiteral
+  - type: RationalNumber
     numerator: 30_000_000_000_000_004
     denominator: 100_000_000_000_000_000
 ```

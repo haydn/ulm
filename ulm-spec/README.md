@@ -5,10 +5,10 @@ Universal Language for Mathematics (ULM)
 
 # Overview
 
-ULM is a language for describing mathematical expressions.
+ULM is a language for describing both the semantics and presentation of mathematical expressions.
+
+# [Language](./LANGUAGE.md)
 
 # [Primitives](./PRIMITIVES.md)
-
-# [Universal](./UNIVERSAL.md)
 
 # [Arithmetic](./ARITHMETIC.md)
