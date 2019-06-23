@@ -1,56 +1,5 @@
 import Token from "./Token";
-
-interface NumericNotEqualRelation {
-  type: "NumericNotEqualRelation";
-  operands: [NumericExpression, NumericExpression];
-}
-
-interface NumericEqualRelation {
-  type: "NumericEqualRelation";
-  operands: [NumericExpression, NumericExpression];
-}
-
-const isNumericRelation = (e: Expression): e is NumericRelation =>
-  e.type === "NumericEqualRelation" || e.type === "NumericNotEqualRelation";
-
-type NumericRelation = NumericEqualRelation | NumericNotEqualRelation;
-
-interface NumericMultiplicationOperation {
-  type: "NumericMultiplicationOperation";
-  operands: [NumericExpression, NumericExpression];
-}
-
-interface NumericAdditionOperation {
-  type: "NumericAdditionOperation";
-  operands: [NumericExpression, NumericExpression];
-}
-
-const isNumericOperation = (e: Expression): e is NumericOperation =>
-  e.type === "NumericAdditionOperation" ||
-  e.type === "NumericMultiplicationOperation";
-
-type NumericOperation =
-  | NumericAdditionOperation
-  | NumericMultiplicationOperation;
-
-type NaturalNumber = bigint;
-
-type IntegerNumber = bigint;
-
-interface RationalNumber {
-  type: "RationalNumber";
-  numerator: IntegerNumber;
-  denominator: NaturalNumber;
-}
-
-const isNumericExpression = (e: Expression): e is NumericExpression =>
-  e.type === "RationalNumber" || isNumericOperation(e);
-
-type NumericExpression = RationalNumber | NumericOperation;
-
-type Expression = NumericExpression | NumericRelation;
-
-type AST = Expression[];
+import AST, { Expression, isNumericExpression } from "./AST";
 
 const parse = (tokens: Token[]): AST => {
   let ast = [];
