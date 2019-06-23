@@ -1,7 +1,11 @@
-Universal Language for Mathematics (ULM)
-----------------------------------------
+<div align="center">
+  <h1>
+    <img src="logo.png" alt="Universal Language for Mathematics (ULM)" width="160" />
+  </h1>
+  <p>A language for describing mathematical expressions.</p>
+</div>
 
-A project to create a universal language for describing mathematical expressions. Unlike LaTeX, MathML and other typesetting languages, ULM is focused on semantics of an expression instead of its presentation.
+Universal Language for Mathematics (ULM) is a language for describing both the semantics and presentation of mathematical expressions.
 
 ⚠️ WIP ⚠️
 
