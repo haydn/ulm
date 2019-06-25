@@ -12,17 +12,17 @@ assert.deepEqual(
           operands: [
             {
               type: "RationalNumber",
-              numerator: BigInt(12312),
-              denominator: BigInt(1)
+              numerator: 12312,
+              denominator: 1
             },
             {
               type: "RationalNumber",
-              numerator: BigInt(33),
-              denominator: BigInt(100)
+              numerator: 33,
+              denominator: 100
             }
           ]
         },
-        { type: "RationalNumber", numerator: BigInt(1), denominator: BigInt(4) }
+        { type: "RationalNumber", numerator: 1, denominator: 4 }
       ]
     }
   ]

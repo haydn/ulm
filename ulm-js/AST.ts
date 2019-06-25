@@ -24,9 +24,9 @@ type NumericOperation =
   | NumericAdditionOperation
   | NumericMultiplicationOperation;
 
-type NaturalNumber = bigint;
+type NaturalNumber = number;
 
-type IntegerNumber = bigint;
+type IntegerNumber = number;
 
 interface RationalNumber {
   type: "RationalNumber";

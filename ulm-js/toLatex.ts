@@ -22,7 +22,7 @@ const expressionToLatex = (expression: Expression): string => {
     )}`;
   }
   if (expression.type === "RationalNumber") {
-    return expression.denominator === BigInt(1)
+    return expression.denominator === 1
       ? expression.numerator.toString()
       : `\\frac{${expression.numerator}}{${expression.denominator}}`;
   }

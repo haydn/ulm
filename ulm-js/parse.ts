@@ -56,15 +56,15 @@ const parse = (tokens: Token[]): AST => {
       let numerator, denominator;
       if (value.includes(".")) {
         const [n, d] = value.split(".");
-        numerator = BigInt(n + d);
-        denominator = BigInt(10 ** d.length);
+        numerator = Number(n + d);
+        denominator = 10 ** d.length;
       } else if (value.includes("/")) {
         const [n, d] = value.split("/");
-        numerator = BigInt(n);
-        denominator = BigInt(d);
+        numerator = Number(n);
+        denominator = Number(d);
       } else {
-        numerator = BigInt(value);
-        denominator = BigInt(1);
+        numerator = Number(value);
+        denominator = 1;
       }
 
       index += 1;

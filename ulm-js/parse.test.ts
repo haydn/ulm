@@ -224,29 +224,29 @@ assert.deepEqual(parse(tokens), [
         operands: [
           {
             type: "RationalNumber",
-            numerator: BigInt(12312),
-            denominator: BigInt(1)
+            numerator: 12312,
+            denominator: 1
           },
           {
             type: "RationalNumber",
-            numerator: BigInt(33),
-            denominator: BigInt(100)
+            numerator: 33,
+            denominator: 100
           }
         ]
       },
-      { type: "RationalNumber", numerator: BigInt(1), denominator: BigInt(4) }
+      { type: "RationalNumber", numerator: 1, denominator: 4 }
     ]
   },
-  { type: "RationalNumber", numerator: BigInt(33), denominator: BigInt(100) },
-  { type: "RationalNumber", numerator: BigInt(1), denominator: BigInt(3) },
-  { type: "RationalNumber", numerator: BigInt(-2), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(23), denominator: BigInt(5) },
-  { type: "RationalNumber", numerator: BigInt(558), denominator: BigInt(100) },
-  { type: "RationalNumber", numerator: BigInt(13), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(3), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(0), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(-34), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(2), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(33), denominator: BigInt(1) },
-  { type: "RationalNumber", numerator: BigInt(1), denominator: BigInt(1) }
+  { type: "RationalNumber", numerator: 33, denominator: 100 },
+  { type: "RationalNumber", numerator: 1, denominator: 3 },
+  { type: "RationalNumber", numerator: -2, denominator: 1 },
+  { type: "RationalNumber", numerator: 23, denominator: 5 },
+  { type: "RationalNumber", numerator: 558, denominator: 100 },
+  { type: "RationalNumber", numerator: 13, denominator: 1 },
+  { type: "RationalNumber", numerator: 3, denominator: 1 },
+  { type: "RationalNumber", numerator: 0, denominator: 1 },
+  { type: "RationalNumber", numerator: -34, denominator: 1 },
+  { type: "RationalNumber", numerator: 2, denominator: 1 },
+  { type: "RationalNumber", numerator: 33, denominator: 1 },
+  { type: "RationalNumber", numerator: 1, denominator: 1 }
 ]);
