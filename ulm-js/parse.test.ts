@@ -212,6 +212,56 @@ const tokens: Token[] = [
       line: 0,
       column: 0
     }
+  },
+  {
+    type: "OperatorName",
+    value: "RationalNumber",
+    file: null,
+    location: {
+      index: 0,
+      line: 0,
+      column: 0
+    }
+  },
+  {
+    type: "LeftParenthesis",
+    value: "(",
+    file: null,
+    location: {
+      index: 0,
+      line: 0,
+      column: 0
+    }
+  },
+  {
+    type: "IntegerNumberLiteral",
+    value: "-13i",
+    file: null,
+    location: {
+      index: 0,
+      line: 0,
+      column: 0
+    }
+  },
+  {
+    type: "NaturalNumberLiteral",
+    value: "25n",
+    file: null,
+    location: {
+      index: 0,
+      line: 0,
+      column: 0
+    }
+  },
+  {
+    type: "RightParenthesis",
+    value: ")",
+    file: null,
+    location: {
+      index: 0,
+      line: 0,
+      column: 0
+    }
   }
 ];
 
@@ -242,11 +292,12 @@ assert.deepEqual(parse(tokens), [
   { type: "RationalNumber", numerator: -2, denominator: 1 },
   { type: "RationalNumber", numerator: 23, denominator: 5 },
   { type: "RationalNumber", numerator: 558, denominator: 100 },
-  { type: "RationalNumber", numerator: 13, denominator: 1 },
-  { type: "RationalNumber", numerator: 3, denominator: 1 },
-  { type: "RationalNumber", numerator: 0, denominator: 1 },
-  { type: "RationalNumber", numerator: -34, denominator: 1 },
-  { type: "RationalNumber", numerator: 2, denominator: 1 },
-  { type: "RationalNumber", numerator: 33, denominator: 1 },
-  { type: "RationalNumber", numerator: 1, denominator: 1 }
+  { type: "NaturalNumber", value: 13 },
+  { type: "WholeNumber", value: 3 },
+  { type: "WholeNumber", value: 0 },
+  { type: "IntegerNumber", value: -34 },
+  { type: "IntegerNumber", value: 2 },
+  { type: "IntegerNumber", value: 33 },
+  { type: "RationalNumber", numerator: 1, denominator: 1 },
+  { type: "RationalNumber", numerator: -13, denominator: 25 }
 ]);

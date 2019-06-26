@@ -1,4 +1,5 @@
-import Token, { CodePoint } from "./Token";
+import Token from "./Token";
+import errorMessage from "./errorMessage";
 
 const SIGNS = new Set(["+", "-"]);
 
@@ -17,13 +18,6 @@ const NAME = new Set([
   ..."abcdefghijklmnopqrstuvwxyz",
   ..."_-!*/\\%^+÷=≠|"
 ]);
-
-const errorMessage = (
-  message: string,
-  { line, column }: CodePoint,
-  file: string | null
-) =>
-  [message, `${file ? `In: ${file} at ` : "At: "}${line}:${column}`].join("\n");
 
 const format = (string?: string): string =>
   string

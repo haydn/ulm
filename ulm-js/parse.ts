@@ -1,5 +1,6 @@
 import Token from "./Token";
 import AST, { Expression, isNumericExpression } from "./AST";
+import errorMessage from "./errorMessage";
 
 const parse = (tokens: Token[]): AST => {
   let ast = [];
@@ -8,7 +9,7 @@ const parse = (tokens: Token[]): AST => {
 
   const walk = (): Expression => {
     if (token.type === "OperatorName") {
-      let operator = token.value;
+      let { value: operator, location, file } = token;
 
       index += 1;
       token = tokens[index];
@@ -22,19 +23,29 @@ const parse = (tokens: Token[]): AST => {
         operator === "NumericAdditionOperation"
       ) {
         if (operands.length !== 2) {
-          throw `Wrong number of operands. Expected 2, found ${
-            operands.length
-          }.`;
+          throw errorMessage(
+            `Wrong number of operands. Expected 2, found ${operands.length}.`,
+            location,
+            file
+          );
         }
 
         let [a, b] = operands;
 
         if (!isNumericExpression(a)) {
-          throw `Unexpected operand: ${a.type} Expected: 'NumericExpression'.`;
+          throw errorMessage(
+            `Unexpected operand: '${a.type}' Expected: 'NumericExpression'.`,
+            location,
+            file
+          );
         }
 
         if (!isNumericExpression(b)) {
-          throw `Unexpected operand: ${b.type} Expected: 'NumericExpression'.`;
+          throw errorMessage(
+            `Unexpected operand: '${b.type}' Expected: 'NumericExpression'.`,
+            location,
+            file
+          );
         }
 
         return {
@@ -43,16 +54,85 @@ const parse = (tokens: Token[]): AST => {
         };
       }
 
-      throw `Unknown operator ${operator}`;
+      if (operator === "RationalNumber") {
+        if (operands.length !== 2) {
+          throw errorMessage(
+            `Wrong number of operands. Expected 2, found ${operands.length}.`,
+            location,
+            file
+          );
+        }
+
+        let [numerator, denominator] = operands;
+
+        if (numerator.type !== "IntegerNumber") {
+          throw errorMessage(
+            `Unexpected operand: '${
+              numerator.type
+            }' Expected: 'IntegerNumber'.`,
+            location,
+            file
+          );
+        }
+
+        if (denominator.type !== "NaturalNumber") {
+          throw errorMessage(
+            `Unexpected operand: '${
+              denominator.type
+            }' Expected: 'NaturalNumber'.`,
+            location,
+            file
+          );
+        }
+
+        return {
+          type: operator,
+          numerator: numerator.value,
+          denominator: denominator.value
+        };
+      }
+
+      throw errorMessage(`Unknown operator: '${operator}'`, location, file);
     }
 
-    if (
-      token.type === "NaturalNumberLiteral" ||
-      token.type === "WholeNumberLiteral" ||
-      token.type === "IntegerNumberLiteral" ||
-      token.type === "RationalNumberLiteral"
-    ) {
-      let value = token.value.replace(/_/g, "").replace(/[nwi]$/, "");
+    if (token.type === "NaturalNumberLiteral") {
+      let value = Number(token.value.slice(0, -1).replace(/_/g, ""));
+
+      index += 1;
+      token = tokens[index];
+
+      return {
+        type: "NaturalNumber",
+        value
+      };
+    }
+
+    if (token.type === "WholeNumberLiteral") {
+      let value = Number(token.value.slice(0, -1).replace(/_/g, ""));
+
+      index += 1;
+      token = tokens[index];
+
+      return {
+        type: "WholeNumber",
+        value
+      };
+    }
+
+    if (token.type === "IntegerNumberLiteral") {
+      let value = Number(token.value.slice(0, -1).replace(/_/g, ""));
+
+      index += 1;
+      token = tokens[index];
+
+      return {
+        type: "IntegerNumber",
+        value
+      };
+    }
+
+    if (token.type === "RationalNumberLiteral") {
+      let value = token.value.replace(/_/g, "");
       let numerator, denominator;
       if (value.includes(".")) {
         const [n, d] = value.split(".");
@@ -77,18 +157,29 @@ const parse = (tokens: Token[]): AST => {
       };
     }
 
-    console.log(token);
-    throw `What's this?`;
+    throw errorMessage(
+      `Unexpected token: '${token.type}'`,
+      token.location,
+      token.file
+    );
   };
 
   const walkParentheses = (): Expression[] => {
     let expressions = [];
 
+    if (!token) {
+      throw `Unexpected end of file. Expected: 'LeftParenthesis'`;
+    }
+
     if (token.type === "LeftParenthesis") {
       index += 1;
       token = tokens[index];
     } else {
-      throw `Unexpected token: '${token.type}' Expected: 'LeftParenthesis'`;
+      throw errorMessage(
+        `Unexpected token: '${token.type}' Expected: 'LeftParenthesis'`,
+        token.location,
+        token.file
+      );
     }
 
     while (token && token.type !== "RightParenthesis") {
@@ -96,7 +187,7 @@ const parse = (tokens: Token[]): AST => {
     }
 
     if (!token) {
-      throw `Unexpected end of file. Expected 'RightParenthesis'`;
+      throw `Unexpected end of file. Expected: 'RightParenthesis'`;
     }
 
     index += 1;

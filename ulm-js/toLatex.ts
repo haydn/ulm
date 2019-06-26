@@ -12,20 +12,22 @@ const expressionToLatex = (expression: Expression): string => {
     )}`;
   }
   if (expression.type === "NumericAdditionOperation") {
-    return `${toLatex(expression.operands[0])} + ${toLatex(
+    return `(${toLatex(expression.operands[0])} + ${toLatex(
       expression.operands[1]
-    )}`;
+    )})`;
   }
   if (expression.type === "NumericMultiplicationOperation") {
-    return `${toLatex(expression.operands[0])} \\times ${toLatex(
+    return `(${toLatex(expression.operands[0])} \\times ${toLatex(
       expression.operands[1]
-    )}`;
+    )})`;
   }
   if (expression.type === "RationalNumber") {
     return expression.denominator === 1
       ? expression.numerator.toString()
       : `\\frac{${expression.numerator}}{${expression.denominator}}`;
   }
+
+  throw `Unsupported expression: '${expression.type}'`;
 };
 
 const toLatex = (x: Expression | AST): string =>

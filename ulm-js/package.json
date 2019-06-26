@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "tsc index.ts --downlevelIteration",
+    "build": "tsc index.ts --downlevelIteration -d",
     "test": "tsc test.ts --downlevelIteration && node test.js"
   },
   "devDependencies": {
