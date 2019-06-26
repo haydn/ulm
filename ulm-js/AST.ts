@@ -24,17 +24,30 @@ type NumericOperation =
   | NumericAdditionOperation
   | NumericMultiplicationOperation;
 
-type NaturalNumber = bigint;
+interface NaturalNumber {
+  type: "NaturalNumber";
+  value: number;
+}
 
-type IntegerNumber = bigint;
+interface WholeNumber {
+  type: "WholeNumber";
+  value: number;
+}
+
+interface IntegerNumber {
+  type: "IntegerNumber";
+  value: number;
+}
 
 interface RationalNumber {
   type: "RationalNumber";
-  numerator: IntegerNumber;
-  denominator: NaturalNumber;
+  numerator: number;
+  denominator: number;
 }
 
-type NumericExpression = RationalNumber | NumericOperation;
+type Number = RationalNumber | IntegerNumber | WholeNumber | NaturalNumber;
+
+type NumericExpression = Number | NumericOperation;
 
 type Expression = NumericExpression | NumericRelation;
 
@@ -55,6 +68,14 @@ const isExpression = (e: AST | Expression): e is Expression =>
 
 export {
   Expression,
+  RationalNumber,
+  IntegerNumber,
+  WholeNumber,
+  NaturalNumber,
+  NumericMultiplicationOperation,
+  NumericAdditionOperation,
+  NumericNotEqualRelation,
+  NumericEqualRelation,
   isExpression,
   isNumericExpression,
   isNumericOperation,

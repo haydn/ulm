@@ -11,24 +11,24 @@ assert.equal(
           operands: [
             {
               type: "RationalNumber",
-              numerator: BigInt(12312),
-              denominator: BigInt(1)
+              numerator: 12312,
+              denominator: 1
             },
             {
               type: "RationalNumber",
-              numerator: BigInt(33),
-              denominator: BigInt(100)
+              numerator: 33,
+              denominator: 100
             }
           ]
         },
-        { type: "RationalNumber", numerator: BigInt(1), denominator: BigInt(4) }
+        { type: "RationalNumber", numerator: 1, denominator: 4 }
       ]
     },
     {
       type: "RationalNumber",
-      numerator: BigInt(10),
-      denominator: BigInt(1)
+      numerator: 10,
+      denominator: 1
     }
   ]),
-  "12312 + \\frac{33}{100} = \\frac{1}{4}\\\\[16pt]10"
+  "(12312 + \\frac{33}{100}) = \\frac{1}{4}\\\\[16pt]10"
 );

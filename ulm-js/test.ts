@@ -16,5 +16,5 @@ assert.equal(
       "NumericEqualRelation(NumericAdditionOperation(12_312, 0.33), 1/4), 10"
     )
   ),
-  "12312 + \\frac{33}{100} = \\frac{1}{4}\\\\[16pt]10"
+  "(12312 + \\frac{33}{100}) = \\frac{1}{4}\\\\[16pt]10"
 );
