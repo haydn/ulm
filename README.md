@@ -3,7 +3,10 @@
     <img src="logo.png" alt="Universal Language for Mathematics (ULM)" width="160" />
   </h1>
   <p>A language for describing mathematical expressions.</p>
+  <a href="https://ulm-spec.haydn.now.sh/">Spec</a> | <a href="https://ulm-playground.haydn.now.sh">Playground</a>
 </div>
+
+## Overview
 
 Universal Language for Mathematics (ULM) is a language for describing both the semantics and presentation of mathematical expressions.
 
