@@ -2,22 +2,35 @@ import React, { useState } from "react";
 import katex from "katex";
 import "./App.css";
 
-import { compile, toLatex } from "ulm-js";
+import { AST, compile, toLatex } from "ulm-js";
 
 const useCompiler = (
   initialCode: string
-): [string, object, string, (newCode: string) => void] => {
-  const render = (newCode: string): [object, string] => {
+): [
+  string,
+  { ast?: AST; error?: string },
+  { html?: string; error?: string },
+  (newCode: string) => void
+] => {
+  const render = (
+    newCode: string
+  ): [{ ast?: AST; error?: string }, { html?: string; error?: string }] => {
     let newAst, newHtml;
 
     try {
-      newAst = compile(newCode);
-      newHtml = katex.renderToString(toLatex(newAst), {
-        throwOnError: false
-      });
+      newAst = { ast: compile(newCode) };
+      try {
+        newHtml = {
+          html: katex.renderToString(toLatex(newAst.ast), {
+            throwOnError: false
+          })
+        };
+      } catch (error) {
+        newHtml = { error: error.toString() };
+      }
     } catch (error) {
-      newAst = { error };
-      newHtml = "";
+      newAst = { error: error.toString() };
+      newHtml = { html: "" };
     }
 
     return [newAst, newHtml];
@@ -43,7 +56,12 @@ const useCompiler = (
 };
 
 const App: React.FC = () => {
-  const [code, ast, html, update] = useCompiler(
+  const [
+    code,
+    { ast, error: astError },
+    { html, error: htmlError },
+    update
+  ] = useCompiler(
     "NumericEqualRelation(\n  NumericAdditionOperation(\n    NumericAdditionOperation(0.1, 0.3),\n    0.2\n  ),\n  3/5\n)"
   );
   return (
@@ -52,7 +70,7 @@ const App: React.FC = () => {
       <h2>Code</h2>
       <div style={{ display: "flex" }}>
         <textarea
-          style={{ flex: "1" }}
+          style={{ flex: "1", fontFamily: "monospace", fontSize: 14 }}
           rows={10}
           value={code}
           onChange={e => {
@@ -60,6 +78,36 @@ const App: React.FC = () => {
           }}
         />
         <div>
+          <strong>Natural number literals</strong>
+          <ul>
+            <li>
+              <code>1n</code>
+            </li>
+            <li>
+              <code>2n</code>
+            </li>
+            <li>
+              <code>3_000_245n</code>
+            </li>
+          </ul>
+          <strong>Integer number literals</strong>
+          <ul>
+            <li>
+              <code>0i</code>
+            </li>
+            <li>
+              <code>+0i</code>
+            </li>
+            <li>
+              <code>-0i</code>
+            </li>
+            <li>
+              <code>-2_345i</code>
+            </li>
+            <li>
+              <code>45_000i</code>
+            </li>
+          </ul>
           <strong>Rational number literals</strong>
           <ul>
             <li>
@@ -84,6 +132,9 @@ const App: React.FC = () => {
           <strong>Operators</strong>
           <ul>
             <li>
+              <code>RationalNumber</code>
+            </li>
+            <li>
               <code>NumericEqualRelation</code>
             </li>
             <li>
@@ -101,11 +152,15 @@ const App: React.FC = () => {
       <div style={{ display: "flex" }}>
         <div>
           <h2>AST</h2>
-          <pre>{JSON.stringify(ast, null, 2)}</pre>
+          <pre>{astError ? astError : JSON.stringify(ast, null, 2)}</pre>
         </div>
         <div>
           <h2>Latex</h2>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          {htmlError ? (
+            htmlError
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: html || "" }} />
+          )}
         </div>
       </div>
     </div>
