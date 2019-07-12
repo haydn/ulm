@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "(rm -r ./build &>/dev/null || true) && mkdir ./build && spec-md ./README.md > ./build/index.html"
+    "build": "(rm -r ./build &>/dev/null || true) && mkdir ./build && spec-md ./README.md > ./build/index.html",
+    "test": "exit 0"
   },
   "devDependencies": {
     "spec-md": "^0.6.0"

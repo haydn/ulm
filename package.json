@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": ["ulm-spec", "ulm-js", "ulm-playground"],
   "scripts": {
-    "build": "yarn workspace ulm-spec run build"
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test"
   }
 }
