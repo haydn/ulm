@@ -1,14 +1,47 @@
 Universal Language for Mathematics (ULM)
 ----------------------------------------
 
-⚠️ WIP ⚠️
+⚠️ DRAFT
 
 # Overview
 
-ULM is a language for describing both the semantics and presentation of mathematical expressions.
+ULM is a language for describing both the semantics and presentation of
+mathematical expressions.
 
-# [Language](./LANGUAGE.md)
+Here is a simple expression written in ULMScript:
 
-# [Primitives](./PRIMITIVES.md)
+```ulm example
++(2, 2)
+```
 
-# [Arithmetic](./ARITHMETIC.md)
+That's just `2 + 2`.
+
+Here is a more complicated expression:
+
+```ulm example
+=(
+  -(
+    245.5,
+    ÷(11, 2, { division-style: "fraction" })
+  ),
+  *(
+    +(100, 20),
+    2,
+    { color: "blue" }
+  )
+)
+```
+
+Which could be displayed like this:
+
+![example](./example.png)
+
+# [Source](./SOURCE.md)
+
+# [Tokens](./TOKENS.md)
+
+# [Syntax](./SYNTAX.md)
+
+# [Expressions](./EXPRESSIONS.md)
+
+# [Presentation](./PRESENTATION.md)
