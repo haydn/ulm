@@ -4,39 +4,25 @@
 
 Separator :: SeparatorChar+
 
-## Comment
+## Reserved
 
-Comment :: // CommentChar*
+Reserved ::
+  - `TRUE`
+  - `FALSE`
 
-```example
-// This is a comment! 😃
-```
-
-## LeftParen
+## Punctuation
 
 LeftParen :: (
-
-## RightParen
-
 RightParen :: )
-
-## LeftCurly
-
 LeftCurly :: {
-
-## RightCurly
-
 RightCurly :: }
-
-## Colon
-
 Colon :: :
 
 ## NaturalNumberLiteral
 
 NaturalNumberLiteral :: LeadingDigit Digit* `n`
 
-A positive integer (`{ 1, 2, 3, … }`).
+A positive integer (`1`, `2`, `3` etc).
 
 An natural number literal must always have an `n` suffix:
 
@@ -86,48 +72,26 @@ An integer number literal must always have an `i` suffix:
 500i
 ```
 
-```counter-example
--2
-```
-
 Underscores may be used to make large numbers easier to read:
 
 ```example
 5_000i
 ```
 
-Integer number literal can be prefixed with either a positive or negative sign:
+A `+` or `-` sign can be optionally preffixed:
 
 ```example
--0i
++14i
 ```
 
 ```example
--52i
+-6i
 ```
 
-```example
--500i
-```
+The `i` suffix must be included:
 
-```example
--5_000i
-```
-
-```example
-+0i
-```
-
-```example
-+52i
-```
-
-```example
-+500i
-```
-
-```example
-+5_000i
+```counter-example
+-2
 ```
 
 Integer number literals cannot have leading zeros or underscores:
@@ -180,6 +144,10 @@ RationalNumberLiteral ::
 
 ```ulm example
 0/1
+```
+
+```ulm counter-example
+1/0
 ```
 
 ```ulm example
@@ -279,7 +247,11 @@ RationalNumberLiteral ::
 StringLiteral :: `"` StringChar* `"`
 
 ```ulm example
-"This is a string"
+"This is a string. 🚀"
+```
+
+```ulm example
+"A \"quote\" in a string."
 ```
 
 ## Identifier
@@ -287,13 +259,21 @@ StringLiteral :: `"` StringChar* `"`
 Identifier ::
   - Sign
   - Sign Sign IdentifierChar*
-  - Sign? LeadingIdentifierChar IdentifierChar* but not `TRUE` or `FALSE`
+  - Sign? LeadingIdentifierChar IdentifierChar* but not Reserved
 
 Note: The `TRUE` and `FALSE` identifiers are not currently used in the language,
 but have been reserved to represent boolean literals in the future.
 
 ```ulm example
 +
+```
+
+```ulm example
+++
+```
+
+```ulm example
+++
 ```
 
 ```ulm example
@@ -328,4 +308,18 @@ This is not a comment because there is no separator between `foo` and `//`:
 
 ```ulm example
 foo//bar
+```
+
+## Comment
+
+Comment :: // CommentChar*
+
+```example
+// This is a comment! 😃
+```
+
+This is invaild because there's no space between the `a` and the first `/`:
+
+```counter-example
+a// A comment?
 ```

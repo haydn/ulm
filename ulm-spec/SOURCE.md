@@ -28,10 +28,29 @@ TrueDigit ::: Digit but not _
 
 LeadingDigit ::: TrueDigit but not 0
 
-IdentifierChar ::: SourceChar but not one of LineTerminator, SeparatorChar, :, {, }, (, ), [, ]
+LeftParen ::: (
 
-Note: Square brackets (`[` and `]`) are not currently used in the language, but have
-been reserved to represent lists in the future.
+RightParen ::: )
+
+LeftCurly ::: {
+
+RightCurly ::: }
+
+Colon ::: :
+
+ReservedChar :::
+  - [
+  - ]
+
+Punctuation :::
+  - LeftParen
+  - RightParen
+  - LeftCurly
+  - RightCurly
+  - Colon
+  - ReservedChar
+
+IdentifierChar ::: SourceChar but not one of SeparatorChar, Punctuation
 
 LeadingIdentifierChar ::: IdentifierChar but not TrueDigit or Sign
 

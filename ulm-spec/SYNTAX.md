@@ -67,7 +67,7 @@ foo : 5n
 
 Operand :
   - Value
-  - Operator
+  - Expression
 
 Operand_list :
   - Operand_list Ignored* Operand
@@ -81,9 +81,9 @@ Operand_list :
 foo()
 ```
 
-## Presentation
+## PresentationRule
 
-Presentation : LeftCurly Ignored* NamedValue_list? Ignored* RightCurly
+PresentationRule : LeftCurly Ignored* NamedValue_list? Ignored* RightCurly
 
 ```ulm example
 { color: "red" }
@@ -95,7 +95,7 @@ Presentation : LeftCurly Ignored* NamedValue_list? Ignored* RightCurly
 
 ## Expression
 
-ExpressionArgs : Operand_list? Ignored* NamedValue_list? Ignored* Presentation?
+ExpressionArgs : Operand_list? Ignored* NamedValue_list? Ignored* PresentationRule?
 
 Expression : Identifier Ignored* LeftParen Ignored* ExpressionArgs Ignored* RightParen
 
@@ -120,8 +120,24 @@ foo ( bar() abc:"xyz" {color:"red"} )
 ```
 
 ```ulm example
-foo(bar(), abc: "xyz", { color: "red" })
+foo(1, 2, a: 1, b: 2, { color: "red" })
 ```
+
+```ulm example
+foo(1, a: 1, { color: "red" })
+```
+
+```ulm example
+foo(a: 1, { color: "red" })
+```
+
+```ulm example
+foo({ color: "red" })
+```
+
+## Selection
+
+???
 
 ## Document
 

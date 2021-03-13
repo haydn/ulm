@@ -15,25 +15,75 @@ import {
   disambiguate
 } from "ulm-js";
 
-const ulmScript: string = "+(2, 12/3)";
-const tokens: Token[] = tokenize(ulmScript);
+const ulm: string = "+(2, 12/3)";
+const tokens: Token[] = tokenize(ulm);
 const ast: AST = parse(tokens);
 const latex: string = toLatex(ast);
 
 // Prints:
 // [
 //   {
-//     type:"NumericAdditionOperation",
+//     type: "Identifier",
+//     value: "+",
+//     location: {
+//       index: 0,
+//       line: 1,
+//       column: 1
+//     }
+//   },
+//   {
+//     type: "LeftParen",
+//     value: "(",
+//     location: {
+//       index: 1,
+//       line: 1,
+//       column: 2
+//     }
+//   },
+//   {
+//     type: "RationalNumberLiteral",
+//     value: "2",
+//     location: {
+//       index: 2,
+//       line: 1,
+//       column: 3
+//     }
+//   },
+//   {
+//     type: "RationalNumberLiteral",
+//     value: "12/3",
+//     location: {
+//       index: 4,
+//       line: 1,
+//       column: 5
+//     }
+//   },
+//   {
+//     type: "RightParen",
+//     value: ")",
+//     location: {
+//       index: 7,
+//       line: 1,
+//       column: 8
+//     }
+//   }
+// ]
+console.log(tokens);
+
+// Prints:
+// [
+//   {
+//     type: "NumericAdditionOperation",
 //     operands: [
 //       {
 //         type: "RationalNumberLiteral",
-//         numerator: 2n,
-//         denominator: 1n
+//         numerator: 2,
+//         denominator: 1
 //       },
 //       {
 //         type: "RationalNumberLiteral",
-//         numerator: 12n,
-//         denominator: 3n,
+//         numerator: 12,
+//         denominator: 3,
 //         presentation: {
 //           display: "fraction"
 //         }
@@ -47,7 +97,7 @@ console.log(ast);
 console.log(latex);
 
 // Prints: "2 + \frac{12}{3}"
-console.log(toLatex(compile(ulmScript)));
+console.log(toLatex(compile(ulm)));
 
 // Prints:
 // [
@@ -56,13 +106,13 @@ console.log(toLatex(compile(ulmScript)));
 //     operands: [
 //       {
 //         type: "RationalNumberLiteral",
-//         numerator: 1n,
-//         denominator: 1n,
+//         numerator: 1,
+//         denominator: 1
 //       },
 //       {
 //         type: "RationalNumberLiteral",
-//         numerator: 2n,
-//         denominator: 1n,
+//         numerator: 2,
+//         denominator: 1
 //       }
 //     ]
 //   }

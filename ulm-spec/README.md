@@ -8,7 +8,7 @@ Universal Language for Mathematics (ULM)
 ULM is a language for describing both the semantics and presentation of
 mathematical expressions.
 
-Here is a simple expression written in ULMScript:
+Here is a simple expression written in ULM:
 
 ```ulm example
 +(2, 2)
@@ -41,7 +41,3 @@ Which could be displayed like this:
 # [Tokens](./TOKENS.md)
 
 # [Syntax](./SYNTAX.md)
-
-# [Expressions](./EXPRESSIONS.md)
-
-# [Presentation](./PRESENTATION.md)
