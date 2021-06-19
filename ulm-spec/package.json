@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "(rm -r ./build &>/dev/null || true) && mkdir ./build && spec-md ./README.md > ./build/index.html",
+    "build": "spec-md ./README.md > ./dist/index.html && cp ./*.png ./dist/",
+    "dev-build": "(rm -r ./dist &>/dev/null || true) && mkdir ./dist && yarn run build",
+    "now-build": "yarn run build",
     "test": "exit 0"
   },
   "devDependencies": {
